@@ -3,8 +3,11 @@ from .models import Songs, Songgeners, Creator, Creatorsongs, Songsrelationships
 
 # Register your models here.
 
+class SongsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'album', 'creator')
+
 admin.site.register(Songsrelationships)
-admin.site.register(Songs)
+admin.site.register(Songs, SongsAdmin)
 admin.site.register(Songgeners)
 admin.site.register(Creator)
 admin.site.register(Creatorsongs)
@@ -13,3 +16,4 @@ admin.site.register(Albumsongs)
 admin.site.register(Users)
 admin.site.register(Genre)
 admin.site.register(Usersongs)
+
