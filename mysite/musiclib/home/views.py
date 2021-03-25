@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Songs
+from .models import Songs, Albums
 
 # Create your views here.
 
