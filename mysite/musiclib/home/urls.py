@@ -5,5 +5,5 @@ from .views import *
 
 urlpatterns = [
     path('', RedirectView.as_view(url='home/', permanent=True)),
-    path('home/', home)
+    path('home/', home),
 ]

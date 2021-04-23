@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig'
 ]
 
+
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 MIDDLEWARE = [
@@ -86,7 +87,7 @@ DATABASES = {
         'HOST': 'DESKTOP-OGQ8P8C',
         'PORT': '',
         'USER': 'django',
-        'PASSWORD': '',
+        'PASSWORD': 'django',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
             'unicode_results': True,
@@ -132,7 +133,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 

@@ -1,11 +1,9 @@
 from django.contrib import admin
-from import_export.admin import ImportExportModelAdmin
 from django.utils.safestring import mark_safe
 
+from import_export.admin import ImportExportModelAdmin
+
 from .models import *
-
-
-# Register your models here.
 
 
 class GenreInline(admin.TabularInline):
@@ -34,11 +32,14 @@ class SongsAdmin(ImportExportModelAdmin):
     ]
     search_fields = ['title']
     list_display = ('title', 'get_img')
+    resource_class = SongsResource
 
     def get_img(self, obj):
         return mark_safe(f'<img src = {obj.cover} width = "50" height = "50"')
 
     get_img.short_description = 'Обложка'
+
+
 
 @admin.register(Albums)
 class AlbumsAdmin(ImportExportModelAdmin):
@@ -49,13 +50,11 @@ class AlbumsAdmin(ImportExportModelAdmin):
     change_list_template = 'admin\home\Albums\change_list.html'
 
     def changelist_view(self, request, extra_context=None):
-        # Aggregate new subscribers per day
         data = Albums.objects.all()
         context = {
             'data':data
         }
 
-        # Call the superclass changelist_view to render the page
         return super().changelist_view(request, extra_context=context)
 
 
